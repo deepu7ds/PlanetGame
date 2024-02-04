@@ -9,27 +9,26 @@ let earthMinorAxis = 150
 export default class Earth{
     
     constructor(){
-        this.EarthComponentX = 0;
-        this.EarthComponentY = 0;
+        this.earthX = 0;
+        this.earthY = 0;
         this.earthDiameter = 0;
     }
 
     update(){
-      
         // perpendicular and base the find tan inverse
-        let a = -(mouseX - c.getCenterX());
-        let b = -(mouseY - c.getCenterY());
+        let a = -(window.mouseX - c.getCenterX());
+        let b = -(window.mouseY - c.getCenterY());
     
         let theta =  c.getCenterAngle(c.setCenterAngle((Math.atan2(b, a))));
         
-        this.EarthComponentX = c.getCenterX() + earthMajotAxis*Math.cos(theta);
-        this.EarthComponentY = c.getCenterY() + earthMinorAxis* Math.sin(theta);
+        this.earthX = c.getCenterX() + earthMajotAxis*Math.cos(theta);
+        this.earthY = c.getCenterY() + earthMinorAxis* Math.sin(theta);
       
         this.earthDiameter = c.getCanvasWidth() * (earthRadiusPercentage/100);
     }
 
     draw(){
         fill(30, 144, 255);
-        circle(this.EarthComponentX, this.EarthComponentY, this.earthDiameter)
+        circle(this.earthX, this.earthY, this.earthDiameter)
     }
   }

@@ -10,12 +10,14 @@ export default class Enemy {
         this.angle = angle;
         this.theta = 0;
         this.earth = earth;
+
+        this.health = 10;
     }
 
     update() {
         this.theta = radians(this.angle);
-        this.enemyX = this.earth.EarthComponentX + (this.earth.earthDiameter / 2) * Math.cos(this.theta);
-        this.enemyY = this.earth.EarthComponentY + (this.earth.earthDiameter / 2) * Math.sin(this.theta);    
+        this.enemyX = this.earth.earthX + (this.earth.earthDiameter / 2) * Math.cos(this.theta);
+        this.enemyY = this.earth.earthY + (this.earth.earthDiameter / 2) * Math.sin(this.theta);    
     }
     
     draw() {
@@ -27,4 +29,8 @@ export default class Enemy {
         pop();
     }
 
+    damage(damage){
+        stroke(2, 5 ,5)
+        this.health -= damage;
+    }
 }
