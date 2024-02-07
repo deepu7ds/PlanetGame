@@ -1,39 +1,57 @@
-import Earth from "../earth";
-
-const e = new Earth();
 
 export default class Bullet {
-    constructor(bulletX, bulletY, damage, speed, theta) {
+    constructor(bulletX, bulletY, damage, speed, theta, id) {
         this.bulletX = bulletX;
         this.bulletY = bulletY;
         this.damage = damage;
         this.speed = speed;
         this.theta = theta;
+        this.id = id;
 
         this.width = 15;
         this.height = 2;
     }
+
     draw() {
-        fill(240, 248, 255)
+        this.update();
+        fill(240, 1, 255)
         push();
         translate(this.bulletX, this.bulletY)
         rotate(this.theta)
         rect(0, 0, this.width, this.height)
-        this.moveBullet();
         pop();
     }
 
-    moveBullet() {
-        // Calculate the new position of the bullet
-        this.bulletX += this.speed * -cos(this.theta);
-        this.bulletY += this.speed * -sin(this.theta);
+    update() {
+        // Calculate the new position of bullet
+        if (this.id == 1) {
+            this.bulletY += this.speed * -sin(this.theta);
+            this.bulletX += this.speed * -cos(this.theta);
+        } else {
+            this.bulletY += this.speed * sin(this.theta);
+            this.bulletX += this.speed * cos(this.theta);
+        }
     }
 
-    collideWith(enemy){
-        if( this.bulletX >= enemy.enemyX && this.bulletX <= enemy.enemyX + 30 && this.bulletY >= enemy.enemyY && this.bulletY <= enemy.enemyY + 40){
-            enemy.damage(this.damage)
-            return true
+    collideWith(sprite) {
+        if (this.id === 1) {
+            let distanceToEarth = dist(this.bulletX, this.bulletY, sprite.enemyX, sprite.enemyY);
+        
+            if(distanceToEarth <= sprite.diameter/2+10){
+                sprite.damage(this.damage);
+                return true;
+            }
+            return false;
+        } 
+        if(this.id == 0){
+            let distancePlayer = dist(this.bulletX, this.bulletY, sprite.playerX, sprite.playerY)
+
+            if(distancePlayer <= 30){
+                sprite.damage(this.damage);
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
+    };
 }
+
