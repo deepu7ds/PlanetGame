@@ -8,8 +8,7 @@ export default class Bullet {
         this.theta = theta;
         this.id = id;
 
-        this.width = 15;
-        this.height = 2;
+        this.diameter = 10;
     }
 
     draw() {
@@ -18,35 +17,45 @@ export default class Bullet {
         push();
         translate(this.bulletX, this.bulletY)
         rotate(this.theta)
-        rect(0, 0, this.width, this.height)
+        ellipse(0, 0, this.diameter, this.diameter - 6);
         pop();
     }
 
     update() {
         // Calculate the new position of bullet
-        if (this.id == 1) {
+        if (this.id === 'player') {
             this.bulletY += this.speed * -sin(this.theta);
             this.bulletX += this.speed * -cos(this.theta);
-        } else {
+        } else if (this.id === 'enemy') {
             this.bulletY += this.speed * sin(this.theta);
             this.bulletX += this.speed * cos(this.theta);
         }
     }
 
     collideWith(sprite) {
-        if (this.id === 1) {
-            let distanceToEarth = dist(this.bulletX, this.bulletY, sprite.enemyX, sprite.enemyY);
-        
-            if(distanceToEarth <= sprite.diameter/2+10){
+
+        if (this.id === 'player' && sprite.id === 'asteroid') {
+            let distanceAsteroid = dist(this.bulletX, this.bulletY, sprite.pos.x, sprite.pos.y);
+            if (distanceAsteroid <= sprite.diameter) {
+                sprite.damageTaken(this.damage);
+                return true;
+            }
+            return false;
+        }
+        else if (this.id === 'player') {
+            let distanceToEnemy = dist(this.bulletX, this.bulletY, sprite.enemyX, sprite.enemyY);
+
+
+            if (distanceToEnemy <= sprite.diameter / 2 + 10) {
                 sprite.damage(this.damage);
                 return true;
             }
             return false;
-        } 
-        if(this.id == 0){
+        }
+        else if (this.id === 'enemy') {
             let distancePlayer = dist(this.bulletX, this.bulletY, sprite.playerX, sprite.playerY)
 
-            if(distancePlayer <= 30){
+            if (distancePlayer <= 30) {
                 sprite.damage(this.damage);
                 return true;
             }

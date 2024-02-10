@@ -7,6 +7,7 @@ export default class Config {
     this.centerX = this.canvasWidth / 2;
     this.centerY = this.canvasHeight / 2;
     this.centerAngle = 0;
+    this.zoomFactor = 1;
   }
 
   getCanvasHeight() {
@@ -15,22 +16,25 @@ export default class Config {
   getCanvasWidth() {
     return this.canvasWidth;
   }
-  getCenterX(){
+  getCenterX() {
     return this.centerX;
   }
-  getCenterY(){
+  getCenterY() {
     return this.centerY;
   }
-  getCenterAngle(){
+  getCenterAngle() {
     return this.centerAngle
   }
-  setCanvasHeight(height){
-    this.canvasHeight = height; 
+  setCanvasHeight(height) {
+    this.canvasHeight = height;
   }
-  setCanvasWidth(width){
+  setCanvasWidth(width) {
     this.canvasWidth = width;
   }
-  setCenterAngle(angle){
+  setCenterAngle(angle) {
     this.centerAngle = angle;
+  }
+  setZoomFactor(zoomFactor) {
+    this.zoomFactor = zoomFactor;
   }
 }

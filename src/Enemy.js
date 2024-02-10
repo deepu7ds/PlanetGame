@@ -5,7 +5,7 @@ const c = new Config();
 export default class Enemy {
 
     constructor(angle, earth, target, bulletController) {
-        this.enemyX = 0;
+        this.enemyzX = 0;
         this.enemyY = 0;
         this.centerX = 0;
         this.centerY = 0;
@@ -16,6 +16,7 @@ export default class Enemy {
         this.color = color(240, 248, 255)
         this.health = 10;
         this.diameter = 40
+        this.id = 'enemy'
     }
 
     update() {
@@ -29,12 +30,11 @@ export default class Enemy {
         push();
         translate(this.enemyX, this.enemyY);
         rotate(this.theta);
-        circle(0,0,this.diameter);
+        circle(0, 0, this.diameter);
         pop();
     }
 
     damage(damage) {
-        stroke(2, 5, 5)
         this.health -= damage;
     }
 
@@ -43,15 +43,14 @@ export default class Enemy {
         let speed = 15;
         const damage = 10;
         const delay = 50;
-        const id = 0;
 
         let playerAngle = degrees(this.target.theta);
-        if(playerAngle < 0){
-            playerAngle += 360; 
+        if (playerAngle < 0) {
+            playerAngle += 360;
         }
 
-        if(Math.abs(playerAngle - degrees(this.theta)) <= 10) {
-            this.bulletController.shoot(this.enemyX, this.enemyY, speed, damage, delay, this.theta, id);
+        if (Math.abs(playerAngle - degrees(this.theta)) <= 10) {
+            this.bulletController.shoot(this.enemyX, this.enemyY, speed, damage, delay, this.theta, this.id);
         }
     }
 
