@@ -43,7 +43,7 @@ export default class Player {
   }
 
   shoot() {
-    if (keyIsPressed && keyCode === 32) {
+    if (window.keyIsPressed && window.keyCode === 32) {
       this.shootPressed = true;
       let speed = 5;
       const damage = 5;

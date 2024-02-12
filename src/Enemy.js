@@ -16,7 +16,7 @@ export default class Enemy {
         this.color = color(240, 248, 255)
         this.health = 10;
         this.diameter = 40
-        this.id = 'enemy'
+        this.id = 'enemy';
     }
 
     update() {

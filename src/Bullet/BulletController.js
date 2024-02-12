@@ -6,8 +6,10 @@ const c = new Config();
 export default class BulletController {
     bullets = [];
     timeTillNextBullet = 0;
-    constructor(earth) {
+    constructor(earth, enemyBulletSprite, playerBulletSprite) {
         this.earth = earth;
+        this.enemyBulletSprite = enemyBulletSprite;
+        this.playerBulletSprite = playerBulletSprite;
     }
 
     draw() {
@@ -26,7 +28,7 @@ export default class BulletController {
 
     shoot(x, y, speed, damage, delay, theta, id) {
         if (this.timeTillNextBullet <= 0) {
-            this.bullets.push(new Bullet(x, y, damage, speed, theta, id));
+            this.bullets.push(new Bullet(x, y, damage, speed, theta, id, this.enemyBulletSprite, this.playerBulletSprite));
             this.timeTillNextBullet = delay;
         }
         this.timeTillNextBullet--;

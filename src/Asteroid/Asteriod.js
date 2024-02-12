@@ -2,14 +2,15 @@ import Config from "../utils";
 const c = new Config();
 
 export default class Asteroid {
-  constructor(x, y, damage) {
+  constructor(x, y, damage,asteroidSprite) {
     this.pos = { x: x, y: y };
     this.vel = { x: Math.random() * 2 - 1, y: Math.random() * 2 - 1 };
     this.acc = { x: 0, y: 0 };
-    this.diameter = Math.random() * 30 + 20; // Random size between 20 and 50
+    this.diameter = Math.random() * 70 + 20; // Random size between 70 and 90
     this.damage = damage
     this.health = 10;
     this.id = 'asteroid';
+    this.asteroidSprite = asteroidSprite;
   }
   
   update() {
@@ -32,8 +33,8 @@ export default class Asteroid {
   }
   display() {
     push();
-    fill(255,255,255);
-    ellipse(this.pos.x, this.pos.y, this.diameter, this.diameter);
+    imageMode(CENTER);
+    image(this.asteroidSprite, this.pos.x, this.pos.y, this.diameter, this.diameter);
     pop();
   }
 

@@ -3,9 +3,10 @@ import Asteroid from "./Asteriod";
 const c = new Config();
 // Class definition for AsteroidController
 export default class AsteroidController {
-  constructor() {
+  constructor(asteroidSprite) {
+    this.asteroidSprite = asteroidSprite;
     this.asteroids = [];
-    this.numAsteroids = 10;
+    this.numAsteroids = 5;
     this.edgePositions = [
       { x: 0, y: Math.random() * c.canvasHeight }, // Left edge
       { x: c.canvasWidth, y: Math.random() * c.canvasHeight }, // Right edge
@@ -28,7 +29,7 @@ export default class AsteroidController {
     for (let i = this.asteroids.length; i < this.numAsteroids; i++) {
       const edgeIndex = Math.floor(Math.random() * this.edgePositions.length);
       const edgePosition = this.edgePositions[edgeIndex];
-      this.asteroids.push(new Asteroid(edgePosition.x, edgePosition.y, 10));
+      this.asteroids.push(new Asteroid(edgePosition.x, edgePosition.y, 10, this.asteroidSprite));
     }
   }
   collideWith(sprite) {

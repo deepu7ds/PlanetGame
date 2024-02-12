@@ -1,5 +1,4 @@
 import Config from "./utils";
-
 const c = new Config();
 
 let earthRadiusPercentage = 25;
@@ -8,12 +7,13 @@ let earthMinorAxis = 70
 
 export default class Earth {
 
-    constructor() {
+    constructor(earthSprite) {
         this.earthX = 0;
         this.earthY = 0;
         this.earthDiameter = 0;
         this.id = 'earth'
         this.health = 500;
+        this.earthSprite = earthSprite;
     }
 
     update() {
@@ -31,8 +31,9 @@ export default class Earth {
     }
 
     draw() {
-        fill(30, 144, 255);
-        circle(this.earthX, this.earthY, this.earthDiameter)
+        imageMode(CENTER);
+        image(this.earthSprite, this.earthX, this.earthY, 300, 300);
+
     }
 
     damage(damage) {
