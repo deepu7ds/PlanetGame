@@ -1,0 +1,4 @@
+node_modules
+.eslintrc.cjs
+.prettierrc.cjs
+random_noise.js
