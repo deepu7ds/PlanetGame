@@ -1,5 +1,5 @@
-import Config from '../../constants/utils';
-import Asteroid from './Asteroid';
+import Config from '../../constants/utils.js';
+import Asteroid from './Asteroid.js';
 const c = new Config();
 
 // Class definition for AsteroidController
