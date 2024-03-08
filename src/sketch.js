@@ -1,13 +1,12 @@
 // Internal dependencies
-import Config from './src/constants/utils.js';
-import Player from './src/entities/player.js';
-import Earth from './src/entities/Earth.js';
-import Enemy from './src/entities/enemy/Enemy.js';
-import BulletController from './src/entities/bullet/BulletController.js';
-import AsteroidController from './src/entities/Asteroid/AsteroidController.js';
-import Zombie from './src/entities/enemy/Zombie.js'; // Import Zombie class
+import Config from './constants/utils.js';
+import Player from './entities/player.js';
+import Earth from './entities/Earth.js';
+import Enemy from './entities/enemy/Enemy.js';
+import BulletController from './entities/bullet/BulletController.js';
+import AsteroidController from './entities/Asteroid/AsteroidController.js';
+import Zombie from './entities/enemy/Zombie.js'; // Import Zombie class
 
-//images
 let earthSprite;
 let playerSprite;
 let enemySprite;
