@@ -1,10 +1,10 @@
 // Internal dependencies
 import Config from './constants/utils.js';
-import Player from './entities/player.js';
+import Player from './entities/Player.js';
 import Earth from './entities/Earth.js';
 import Enemy from './entities/enemy/Enemy.js';
 import BulletController from './entities/bullet/BulletController.js';
-import AsteroidController from './entities/Asteroid/AsteroidController.js';
+import AsteroidController from './entities/asteroid/AsteroidController.js';
 import Zombie from './entities/enemy/Zombie.js'; // Import Zombie class
 
 let earthSprite;

@@ -1,5 +1,5 @@
-import Bullet from './Bullet';
-import Config from '../../constants/utils';
+import Bullet from './Bullet.js';
+import Config from '../../constants/utils.js';
 
 const c = new Config();
 
