@@ -1,10 +1,10 @@
 // Internal dependencies
 import Config from './constants/utils.js';
-import Player from './entities/Player.js';
+import Player from './entities/player.js';
 import Earth from './entities/Earth.js';
 import Enemy from './entities/enemy/Enemy.js';
 import BulletController from './entities/bullet/BulletController.js';
-import AsteroidController from './entities/asteroid/AsteroidController.js';
+import AsteroidController from './entities/Asteroid/AsteroidController.js';
 import Zombie from './entities/enemy/Zombie.js'; // Import Zombie class
 
 let earthSprite;
@@ -21,20 +21,16 @@ let collison;
 let backgroundMusic;
 
 window.preload = function preload() {
-  earthSprite = loadImage('../public/assets/images/earthSprite.png');
-  playerSprite = loadImage('../public/assets/images/playerSprite.png');
-  enemySprite = loadImage('../public/assets/images/enemySprite.png');
-  enemyBulletSprite = loadImage(
-    '../public/assets/images/enemyBulletSprite.png'
-  );
-  playerBulletSprite = loadImage(
-    '../public/assets/images/playerBulletSprite.png'
-  );
-  asteroidSprite = loadImage('../public/assets/images/asteroidSprite.png');
-  zombieSprite = loadImage('../public/assets/images/zombieSprite.gif');
-  enemyDied = loadSound('../public/assets/sound/enemyDied.wav');
-  collison = loadSound('../public/assets/sound/collision.wav');
-  backgroundMusic = loadSound('../public/assets/sound/background.mp3');
+  earthSprite = loadImage('/assets/images/earthSprite.png');
+  playerSprite = loadImage('/assets/images/playerSprite.png');
+  enemySprite = loadImage('/assets/images/enemySprite.png');
+  enemyBulletSprite = loadImage('/assets/images/enemyBulletSprite.png');
+  playerBulletSprite = loadImage('/assets/images/playerBulletSprite.png');
+  asteroidSprite = loadImage('/assets/images/asteroidSprite.png');
+  zombieSprite = loadImage('/assets/images/zombieSprite.gif');
+  enemyDied = loadSound('/assets/sound/enemyDied.wav');
+  collison = loadSound('/assets/sound/collision.wav');
+  backgroundMusic = loadSound('/assets/sound/background.mp3');
 };
 
 //objects initialized
@@ -228,15 +224,17 @@ window.draw = function draw() {
     pop();
   }
 
-  // Draw zombies
+  // Dr   zombies
+  enem;
   enemies.forEach((enemy) => {
-    push();
+    sh();
     translate(enemy.enemyX, enemy.enemyY);
     image(enemySprite, 0, 0, enemy.diameter + 20, enemy.diameter);
     pop();
   });
 
-  zombies.forEach((zombie) => {
+  zom;
+  ies.forEach((zombie) => {
     push();
     translate(zombie.zombieX, zombie.zombieY);
     if (zombie.zombieX > width / 2) {
