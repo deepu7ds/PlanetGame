@@ -1,0 +1,14 @@
+@media (max-width: 10in) {
+    /* Hide the entire website */
+    body {
+      display: none;
+    }
+  
+    /* Display text for users on smaller screens */
+    .message {
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 50px;
+    }
+  }
