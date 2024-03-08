@@ -2,8 +2,8 @@ import Config from '../constants/utils';
 const c = new Config();
 
 let earthRadiusPercentage = 25;
-let earthMajotAxis = 250;
-let earthMinorAxis = 230;
+// let earthMajotAxis = 250;
+// let earthMinorAxis = 230;
 
 export default class Earth {
   constructor(earthSprite) {
@@ -17,15 +17,16 @@ export default class Earth {
 
   update() {
     // perpendicular and base the find tan inverse
-    let a = -(window.mouseX - c.getCenterX());
-    let b = -(window.mouseY - c.getCenterY());
-    let theta = c.getCenterAngle(c.setCenterAngle(Math.atan2(b, a)));
-    this.earthX = c.getCenterX() + earthMajotAxis * Math.cos(theta);
-    this.earthY = c.getCenterY() + earthMinorAxis * Math.sin(theta);
+    // let a = -(window.mouseX - c.getCenterX());
+    // let b = -(window.mouseY - c.getCenterY());
+    // let theta = c.getCenterAngle(c.setCenterAngle(Math.atan2(b, a)));
+    // this.earthX = c.getCenterX() + earthMajotAxis * Math.cos(theta);
+    // this.earthY = c.getCenterY() + earthMinorAxis * Math.sin(theta);
 
-    // this.earthX = c.canvasWidth / 2;
-    // this.earthY = c.canvasHeight / 2;
-    this.earthDiameter = c.getCanvasWidth() * (earthRadiusPercentage / 100);
+    this.earthX = c.canvasWidth / 2;
+    this.earthY = c.canvasHeight / 2;
+    this.earthDiameter =
+      1.5 * c.getCanvasWidth() * (earthRadiusPercentage / 100);
   }
 
   draw() {

@@ -43,31 +43,43 @@
           alt=""
         />
       </section>
-      <section class="panel">
-        <div class="player-name">
-          <input type="text" placeholder="Enter your Name" id="name" />
-          <select name="" id="">
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-            <option value="3">LGBTQ+</option>
-          </select>
-        </div>
-        <button class="play-btn">Play</button>
+      <section>
+        <form class="panel" id="player-form">
+          <div class="player-name">
+            <input
+              type="text"
+              placeholder="Enter your Name"
+              id="name"
+              required
+            />
+            <select name="" id="gender">
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">LGBTQ+</option>
+            </select>
+          </div>
+          <button type="submit" class="play-btn" disabled>Play</button>
+        </form>
       </section>
+
       <section class="footer">
         <div class="section-container">
           <div class="section-left section">
             <h2>About</h2>
             <ul>
               <li>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit
-                excepturi sapiente iure numquam autem! Quaerat quod suscipit
-                perspiciatis delectus sint, modi culpa dolorum corporis eaque
-                nihil praesentium eveniet consequatur vitae?
+                Welcome to Planet Game! In this thrilling adventure, you're
+                tasked with protecting Earth from invading aliens and zombies.
+                As the player, your mission is clear: pilot your spaceship armed
+                with powerful weapons and navigate through space to eliminate
+                the enemies on earth.
               </li>
               <li>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Exercitationem, molestiae!
+                Your goal is to destroy aliens and zombies before they have a
+                chance to devour our planet. With each enemy you defeat, you'll
+                earn points that not only increase your score but also replenish
+                the health of both you and Earth. But remember, if Earth's
+                health drops to zero, it's game over!
               </li>
             </ul>
           </div>
@@ -75,35 +87,56 @@
             <h2>How To Play</h2>
             <ul>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-                libero!
+                Navigate your spaceship across the screen using the W, A, S, and
+                D keys.
               </li>
               <li>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Dolores nisi eligendi maxime numquam dignissimos natus!
+                Use the space bar to fire bullets and combat incoming enemies.
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Doloremque vel tenetur exercitationem. Voluptatibus cumque
-                distinctio, veritatis sequi, id asperiores, eveniet eius .
+                Beware, aliens will also fire back when you're within their
+                range.
               </li>
+              <li>
+                Keep moving, keep shooting, and defend Earth from the alien
+                invasion!
+              </li>
+              <li>Stay close to Earth to avoid getting lost in space.</li>
             </ul>
           </div>
           <div class="section-right section">
-            <h2>Easter Eggs</h2>
+            <h2>About Creator</h2>
             <ul>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Excepturi, nihil.
+                Hey there!, I'm Deepanshu, currently pursuing Computer Science
+                at Hansraj College, Delhi University. Skilled in JavaScript,
+                React, and C++. I've recently delved into the world of game
+                development!
               </li>
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptates explicabo culpa asperiores laborum quaerat a quas
-                similique ipsum porro velit?
+                I have created this game which may appear modest at first
+                glance, but I assure you it's a labor of love. Rather than
+                relying on pre-built game engines, I chose to craft every aspect
+                from the ground up. This game has been a personal project, built
+                from scratch. Every detail, from the physics simulations to the
+                camera movements.
               </li>
               <li>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius,
-                provident facilis ab pariatur tempora laborum?
+                I'm genuinely hopeful that you'll find value in my efforts.Feel
+                free to connect with me on social media:
+                <a href="https://github.com/deepu7ds">
+                  <img src="../../assets/svg/github.png" alt="" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/deepanshu-saini-61825824a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                >
+                  <img src="../../assets/svg/linkedin.png" alt="" />
+                </a>
+                <a
+                  href="https://www.instagram.com/deep4nshu_?igsh=MXc5YzV5bXB1eWZveg%3D%3D&utm_source=qr"
+                >
+                  <img src="../../assets/svg/instagram.png" alt="" />
+                </a>
               </li>
             </ul>
           </div>

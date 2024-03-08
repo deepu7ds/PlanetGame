@@ -64,6 +64,20 @@ export default class Bullet {
         return true;
       }
       return false;
+    } else if (sprite.id == 1) {
+      console.log('zombie');
+      let distancePlayer = dist(
+        this.bulletX,
+        this.bulletY,
+        sprite.zombieX,
+        sprite.zombieY
+      );
+
+      if (distancePlayer <= sprite.diameter / 2) {
+        sprite.damage(this.damage);
+        return true;
+      }
+      return false;
     } else if (this.id === 'player') {
       let distanceToEnemy = dist(
         this.bulletX,

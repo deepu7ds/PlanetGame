@@ -42,5 +42,11 @@ module.exports = {
     rect: 'readonly',
     scale: 'readonly',
     lerp: 'readonly',
+    camera: 'readonly',
+    WEBGL: 'readonly',
+    height: 'readonly',
+    tan: 'readonly',
+    PI: 'readonly',
+    width: 'readonly',
   },
 };

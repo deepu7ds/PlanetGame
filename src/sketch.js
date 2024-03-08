@@ -2,9 +2,10 @@
 import Config from './constants/utils.js';
 import Player from './entities/player.js';
 import Earth from './entities/Earth.js';
-import Enemy from './entities/enemy.js';
+import Enemy from './entities/enemy/Enemy.js';
 import BulletController from './entities/bullet/BulletController.js';
 import AsteroidController from './entities/Asteroid/AsteroidController.js';
+import Zombie from './entities/enemy/Zombie.js'; // Import Zombie class
 
 //images
 let earthSprite;
@@ -13,6 +14,8 @@ let enemySprite;
 let enemyBulletSprite;
 let playerBulletSprite;
 let asteroidSprite;
+let zombieSprite;
+
 //sound
 let enemyDied;
 let collison;
@@ -25,6 +28,7 @@ window.preload = function preload() {
   enemyBulletSprite = loadImage('/assets/images/enemyBulletSprite.png');
   playerBulletSprite = loadImage('/assets/images/playerBulletSprite.png');
   asteroidSprite = loadImage('/assets/images/asteroidSprite.png');
+  zombieSprite = loadImage('/assets/images/zombieSprite.gif');
   enemyDied = loadSound('/assets/sound/enemyDied.wav');
   collison = loadSound('/assets/sound/collision.wav');
   backgroundMusic = loadSound('/assets/sound/background.mp3');
@@ -37,42 +41,43 @@ let bulletController;
 let player;
 let asteroidController;
 let enemies;
+let zombies; // Add a variable for zombies
 let enemyAngle;
-let score;
+let zombieAngle; // Create an angle array for zombies
 
-function drawCurrentScore() {
-  let textToShow = 'Score: ' + score;
-  textSize(32);
-  fill(250);
-  text(textToShow, 20, 50);
-}
+//gloabl variables
+window.score = 0;
 
-function drawHealth() {
-  let textToShow =
-    player && player.health > 0 ? 'Health: ' + player.health : 'You died';
-  textSize(32);
-  fill(250);
-  text(textToShow, 1000, 50);
-}
-
-function canvasSize() {
-  window.frameRate(60);
-  window.createCanvas(c.getCanvasWidth(), c.getCanvasHeight());
-}
+window.playerHealth = 100;
+window.earthHealth = 500;
+window.playerCoordinates = { x: 0, y: 0 };
 
 function updateEntities() {
   earth.update();
   asteroidController.update();
   player.update();
   enemies.forEach((enemy) => enemy.update());
+  zombies.forEach((zombie) => zombie.update()); // Update zombies
+  window.earthHealth = earth.health;
 }
 
 function spawnEnemies() {
   for (let i = 0; i < 4; i++) {
-    if (enemies.length < 6) {
+    if (enemies.length < 4) {
       enemies.push(
         new Enemy(
           enemyAngle[Math.floor(Math.random() * enemyAngle.length)],
+          earth,
+          player,
+          bulletController
+        )
+      );
+    }
+    if (zombies.length < 4) {
+      // Spawn zombies
+      zombies.push(
+        new Zombie(
+          zombieAngle[Math.floor(Math.random() * zombieAngle.length)],
           earth,
           player,
           bulletController
@@ -92,7 +97,26 @@ function handleCollisions() {
       if (enemy.health <= 0) {
         enemyDied.play();
         enemies.splice(enemies.indexOf(enemy), 1);
-        score += 5;
+        localStorage.setItem('score', (window.score += 5));
+        earth.health += 10;
+        player.health += 1;
+      }
+    }
+  });
+
+  zombies.forEach((zombie) => {
+    // Handle collisions for zombies
+    if (
+      bulletController.collidedWith(zombie) ||
+      asteroidController.collideWith(zombie)
+    ) {
+      collison.play();
+      if (zombie.health <= 0) {
+        enemyDied.play();
+        zombies.splice(zombies.indexOf(zombie), 1);
+        localStorage.setItem('score', (window.score += 5));
+        earth.health += 10;
+        player.health += 1;
       }
     }
   });
@@ -119,6 +143,11 @@ function handleCollisions() {
   });
 }
 
+let targetX, targetY;
+let smoothX;
+let smoothY;
+let cameraZoom;
+
 window.setup = function setup() {
   c = new Config();
   earth = new Earth(earthSprite);
@@ -130,14 +159,57 @@ window.setup = function setup() {
   player = new Player(bulletController);
   asteroidController = new AsteroidController(asteroidSprite);
   enemies = [];
-  enemyAngle = [0, 90, 180, 270];
-  score = 0;
+  zombies = []; // Initialize zombies array
+  enemyAngle = [0, 60, 120, 180, 240, 300];
+  zombieAngle = [45, 135, 225, 315]; // Create an angle array for zombies
+  window.score = 0;
 
+  window.frameRate(120);
+  window.createCanvas(c.getCanvasWidth(), c.getCanvasHeight(), WEBGL);
+  smoothX = player.playerX;
+  smoothY = player.playerY;
+  cameraZoom = height / 2 / tan(PI / 12);
   backgroundMusic.loop();
-  canvasSize();
 };
 
+let targetCamera = window.height / 2 / Math.tan(Math.PI / 12);
 window.draw = function draw() {
+  //gloaval
+  window.playerCoordinates.x = player.playerX;
+  window.playerCoordinates.y = player.playerY;
+
+  //camera
+  let angle = degrees(player.theta);
+  // console.log(angle);
+
+  if (angle > -40 && angle < 40) {
+    targetX = player.playerX - 200;
+    targetY = player.playerY;
+  } else if (angle > -130 && angle < -40) {
+    targetX = player.playerX;
+    targetY = player.playerY + 200;
+  } else if (angle > 40 && angle < 130) {
+    targetX = player.playerX;
+    targetY = player.playerY - 200;
+  } else {
+    targetX = player.playerX + 200;
+    targetY = player.playerY;
+  }
+
+  if (
+    dist(player.playerX, player.playerY, width / 2, height / 2) >
+    width / 1.5
+  ) {
+    targetCamera = height / 2 / tan(PI / 20);
+  } else {
+    targetCamera = height / 2 / tan(PI / 14);
+  }
+  // Use lerp to smoothly transition the camera position
+  cameraZoom = lerp(cameraZoom, targetCamera, 0.02);
+  smoothX = lerp(smoothX, targetX, 0.02);
+  smoothY = lerp(smoothY, targetY, 0.02);
+
+  camera(width / 2, height / 2, cameraZoom, smoothX, smoothY, 0, 0, 1, 0);
   background(1);
   earth.draw();
   updateEntities();
@@ -145,6 +217,7 @@ window.draw = function draw() {
   handleCollisions();
 
   // Draw player
+  window.playerHealth = player.health;
   if (player.health > 0) {
     push();
     translate(player.playerX, player.playerY);
@@ -152,7 +225,7 @@ window.draw = function draw() {
     pop();
   }
 
-  // Draw enemies
+  // Draw zombies
   enemies.forEach((enemy) => {
     push();
     translate(enemy.enemyX, enemy.enemyY);
@@ -160,8 +233,19 @@ window.draw = function draw() {
     pop();
   });
 
-  drawHealth();
-  drawCurrentScore();
+  zombies.forEach((zombie) => {
+    push();
+    translate(zombie.zombieX, zombie.zombieY);
+    if (zombie.zombieX > width / 2) {
+      image(zombieSprite, 0, 0, zombie.diameter, zombie.diameter);
+    } else {
+      image(zombieSprite, 0, 0, -zombie.diameter, zombie.diameter);
+    }
+    pop();
+  });
+
+  // Draw enemies
+
   bulletController.draw();
   asteroidController.draw();
 };

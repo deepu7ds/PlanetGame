@@ -13,8 +13,6 @@ export default class Config {
 
     // Initialize the canvas
     this.initCanvas();
-
-    console.log(this.centerX);
   }
 
   getCanvasHeight() {

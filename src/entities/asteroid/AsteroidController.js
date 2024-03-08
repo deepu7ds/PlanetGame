@@ -1,17 +1,19 @@
 import Config from '../../constants/utils';
 import Asteroid from './Asteroid';
 const c = new Config();
+
 // Class definition for AsteroidController
 export default class AsteroidController {
   constructor(asteroidSprite) {
     this.asteroidSprite = asteroidSprite;
     this.asteroids = [];
-    this.numAsteroids = 5;
+    this.numAsteroids = 10;
     this.edgePositions = [
-      { x: 0, y: Math.random() * c.canvasHeight }, // Left edge
-      { x: c.canvasWidth, y: Math.random() * c.canvasHeight }, // Right edge
-      { x: Math.random() * c.canvasWidth, y: 0 }, // Top edge
-      { x: Math.random() * c.canvasWidth, y: c.canvasHeight }, // Bottom edge
+      // change these multipliers to change the spawn area as these are hardcoded values
+      { x: -c.canvasWidth, y: Math.random() * c.canvasHeight }, // Left edge
+      { x: c.canvasWidth * 2, y: Math.random() * c.canvasHeight }, // Right edge
+      { x: Math.random() * c.canvasWidth, y: -c.canvasHeight }, // Top edge
+      { x: Math.random() * c.canvasWidth, y: c.canvasHeight * 2 }, // Bottom edge
     ];
   }
 

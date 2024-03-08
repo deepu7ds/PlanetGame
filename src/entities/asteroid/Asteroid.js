@@ -20,14 +20,14 @@ export default class Asteroid {
     this.pos.y += this.vel.y;
 
     // Wrap around edges
-    if (this.pos.x > c.canvasWidth * 1.5 + this.diameter) {
+    if (this.pos.x > c.canvasWidth * 3 + this.diameter) {
       this.pos.x = -this.diameter;
-    } else if (this.pos.x < -this.diameter) {
-      this.pos.x = c.canvasWidth * 1.5 + this.diameter;
+    } else if (this.pos.x < -this.diameter - c.canvasWidth) {
+      this.pos.x = c.canvasWidth + this.diameter;
     }
-    if (this.pos.y > c.canvasHeight * 1.5 + this.diameter) {
+    if (this.pos.y > c.canvasHeight * 3 + this.diameter) {
       this.pos.y = -this.diameter;
-    } else if (this.pos.y < -this.diameter) {
+    } else if (this.pos.y < -this.diameter - c.canvasHeight) {
       this.pos.y = c.canvasHeight + this.diameter;
     }
   }

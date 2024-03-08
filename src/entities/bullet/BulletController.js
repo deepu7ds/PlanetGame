@@ -6,8 +6,8 @@ const c = new Config();
 export default class BulletController {
   constructor(earth, enemyBulletSprite, playerBulletSprite) {
     this.bullets = [];
-    this.timeTillNextBullet = 0;
-
+    this.timeTillNextEnemyBullet = 0;
+    this.timeTillNextPlayerBullet = 0;
     this.earth = earth;
     this.enemyBulletSprite = enemyBulletSprite;
     this.playerBulletSprite = playerBulletSprite;
@@ -36,7 +36,7 @@ export default class BulletController {
   }
 
   shoot(x, y, speed, damage, delay, theta, id) {
-    if (this.timeTillNextBullet <= 0) {
+    if (this.timeTillNextEnemyBullet <= 0 && id === 'enemy') {
       this.bullets.push(
         new Bullet(
           x,
@@ -49,17 +49,41 @@ export default class BulletController {
           this.playerBulletSprite
         )
       );
-      this.timeTillNextBullet = delay;
+      this.timeTillNextEnemyBullet = delay;
     }
-    this.timeTillNextBullet--;
+
+    if (this.timeTillNextPlayerBullet <= 0 && id === 'player') {
+      this.bullets.push(
+        new Bullet(
+          x,
+          y,
+          damage,
+          speed,
+          theta,
+          id,
+          this.enemyBulletSprite,
+          this.playerBulletSprite
+        )
+      );
+      this.timeTillNextPlayerBullet = delay;
+    }
+
+    this.timeTillNextEnemyBullet = Math.max(
+      0,
+      this.timeTillNextEnemyBullet - 1
+    );
+    this.timeTillNextPlayerBullet = Math.max(
+      0,
+      this.timeTillNextPlayerBullet - 1
+    );
   }
 
   isBulletOffScreen(bullet) {
     return (
-      bullet.bulletX < 0 ||
-      bullet.bulletX > c.canvasWidth ||
-      bullet.bulletY < 0 ||
-      bullet.bulletY > c.canvasHeight
+      bullet.bulletX < -c.canvasWidth ||
+      bullet.bulletX > c.canvasWidth * 4 ||
+      bullet.bulletY < -c.canvasHeight ||
+      bullet.bulletY > c.canvasHeight * 4
     );
   }
 
