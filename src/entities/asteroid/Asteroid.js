@@ -1,4 +1,4 @@
-import Config from '../../constants/utils';
+import Config from '../../constants/utils.js';
 const c = new Config();
 
 export default class Asteroid {
