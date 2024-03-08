@@ -225,16 +225,14 @@ window.draw = function draw() {
   }
 
   // Dr   zombies
-  enem;
   enemies.forEach((enemy) => {
-    sh();
+    push();
     translate(enemy.enemyX, enemy.enemyY);
     image(enemySprite, 0, 0, enemy.diameter + 20, enemy.diameter);
     pop();
   });
 
-  zom;
-  ies.forEach((zombie) => {
+  zombies.forEach((zombie) => {
     push();
     translate(zombie.zombieX, zombie.zombieY);
     if (zombie.zombieX > width / 2) {
