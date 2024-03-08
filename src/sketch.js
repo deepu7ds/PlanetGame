@@ -21,16 +21,20 @@ let collison;
 let backgroundMusic;
 
 window.preload = function preload() {
-  earthSprite = loadImage('/assets/images/earthSprite.png');
-  playerSprite = loadImage('/assets/images/playerSprite.png');
-  enemySprite = loadImage('/assets/images/enemySprite.png');
-  enemyBulletSprite = loadImage('/assets/images/enemyBulletSprite.png');
-  playerBulletSprite = loadImage('/assets/images/playerBulletSprite.png');
-  asteroidSprite = loadImage('/assets/images/asteroidSprite.png');
-  zombieSprite = loadImage('/assets/images/zombieSprite.gif');
-  enemyDied = loadSound('/assets/sound/enemyDied.wav');
-  collison = loadSound('/assets/sound/collision.wav');
-  backgroundMusic = loadSound('/assets/sound/background.mp3');
+  earthSprite = loadImage('../public/assets/images/earthSprite.png');
+  playerSprite = loadImage('../public/assets/images/playerSprite.png');
+  enemySprite = loadImage('../public/assets/images/enemySprite.png');
+  enemyBulletSprite = loadImage(
+    '../public/assets/images/enemyBulletSprite.png'
+  );
+  playerBulletSprite = loadImage(
+    '../public/assets/images/playerBulletSprite.png'
+  );
+  asteroidSprite = loadImage('../public/assets/images/asteroidSprite.png');
+  zombieSprite = loadImage('../public/assets/images/zombieSprite.gif');
+  enemyDied = loadSound('../public/assets/sound/enemyDied.wav');
+  collison = loadSound('../public/assets/sound/collision.wav');
+  backgroundMusic = loadSound('../public/assets/sound/background.mp3');
 };
 
 //objects initialized
