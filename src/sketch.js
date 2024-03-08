@@ -34,6 +34,8 @@ window.preload = function preload() {
 };
 
 //objects initialized
+//fucked
+
 let c;
 let earth;
 let bulletController;
