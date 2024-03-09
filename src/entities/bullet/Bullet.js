@@ -65,7 +65,6 @@ export default class Bullet {
       }
       return false;
     } else if (sprite.id == 1) {
-      console.log('zombie');
       let distancePlayer = dist(
         this.bulletX,
         this.bulletY,

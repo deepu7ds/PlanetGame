@@ -42,6 +42,5 @@ export default class Earth {
 
   damage(damage) {
     this.health -= damage;
-    console.log('earth health', this.health);
   }
 }
