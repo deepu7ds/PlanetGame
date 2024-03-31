@@ -21,20 +21,25 @@ let collison;
 let backgroundMusic;
 
 window.preload = function preload() {
-  earthSprite = loadImage('/assets/images/earthSprite.png ');
-  playerSprite = loadImage('/assets/images/playerSprite.png');
-  enemySprite = loadImage('/assets/images/enemySprite.png');
-  enemyBulletSprite = loadImage('/assets/images/enemyBulletSprite.png');
-  playerBulletSprite = loadImage('/assets/images/playerBulletSprite.png');
-  asteroidSprite = loadImage('/assets/images/asteroidSprite.png');
-  zombieSprite = loadImage('/assets/images/zombieSprite.gif');
-  enemyDied = loadSound('/assets/sound/enemyDied.wav');
-  collison = loadSound('/assets/sound/collision.wav');
-  backgroundMusic = loadSound('/assets/sound/background.mp3');
+  earthSprite = loadImage('/PlanetGame/public/assets/images/earthSprite.png');
+  playerSprite = loadImage('/PlanetGame/public/assets/images/playerSprite.png');
+  enemySprite = loadImage('/PlanetGame/public/assets/images/enemySprite.png');
+  enemyBulletSprite = loadImage(
+    '/PlanetGame/public/assets/images/enemyBulletSprite.png'
+  );
+  playerBulletSprite = loadImage(
+    '/PlanetGame/public/assets/images/playerBulletSprite.png'
+  );
+  asteroidSprite = loadImage(
+    '/PlanetGame/public/assets/images/asteroidSprite.png'
+  );
+  zombieSprite = loadImage('/PlanetGame/public/assets/images/zombieSprite.gif');
+  enemyDied = loadSound('/PlanetGame/public/assets/sound/enemyDied.wav');
+  collison = loadSound('/PlanetGame/public/assets/sound/collision.wav');
+  backgroundMusic = loadSound('/PlanetGame/public/assets/sound/background.mp3');
 };
 
 //objects initialized
-//fucked
 
 let c;
 let earth;
