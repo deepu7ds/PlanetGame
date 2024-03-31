@@ -4,7 +4,7 @@ Welcome to Planet Game! Defend Earth from invading aliens and zombies in this ac
 
 ## How To Play
 
-- [Click here](deepu7ds.github.io/PlanetGame/) to find deployment.
+- [Click here]([deepu7ds.github.io/PlanetGame/](https://deepu7ds.github.io/PlanetGame/)) to find deployment.
 - Use W, A, S, and D keys to move.
 - Press spacebar to fire bullets.
 
