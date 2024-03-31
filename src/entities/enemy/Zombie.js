@@ -17,7 +17,7 @@ export default class Zombie {
     this.zombieY =
       this.earth.earthY +
       (this.earth.earthDiameter / 2 - 10) * Math.sin(this.theta);
-    this.earth.damage(0.05);
+    this.earth.damage(0.03);
   }
 
   draw() {

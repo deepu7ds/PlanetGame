@@ -19,7 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 40px;
+    font-size: 60px;
     gap: 50px;
 
 }
@@ -40,7 +40,7 @@ body {
 }
 
 .score{
-    font-size: 50px;
+    font-size: 70px;
     font-weight: bold;
     text-shadow: 0px 1px 3px #dfdeff;
 }

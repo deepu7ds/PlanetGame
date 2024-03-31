@@ -48,8 +48,8 @@ export default class Enemy {
   shoot() {
     this.shootPressed = true;
     let speed = 10;
-    const damage = 5;
-    const delay = 50;
+    const damage = 10;
+    const delay = 40;
 
     let playerAngle = degrees(this.target.theta);
     if (playerAngle < 0) {

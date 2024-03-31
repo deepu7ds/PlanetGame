@@ -2,9 +2,6 @@ import Config from '../constants/utils.js';
 
 const c = new Config();
 
-// let playerMajorAxis = c.getCanvasWidth() * 0.2;
-// let playerMinorAxis = c.getCanvasHeight() * 0.2;
-
 export default class Player {
   constructor(bulletController) {
     this.playerX = 0;
@@ -18,10 +15,7 @@ export default class Player {
   }
 
   update() {
-    // perpendicular and base the find tan inverse
-    // making playermovement through keys w s d a
-
-    // checking if player is inside ellipse
+    //checking if the player is within the cansvas and away from earth
     if (
       dist(this.playerX, this.playerY, c.getCenterX(), c.getCenterY()) >
         c.getCanvasWidth() / 2.8 &&
@@ -63,11 +57,6 @@ export default class Player {
     let b = this.playerY - c.canvasHeight / 2;
 
     this.theta = Math.atan2(b, a);
-
-    // this.playerX =
-    //   c.getCenterX() + (playerMajorAxis + 400) * Math.cos(this.theta);
-    // this.playerY =
-    //   c.getCenterY() + (playerMinorAxis + 400) * Math.sin(this.theta);
     this.shoot();
   }
 

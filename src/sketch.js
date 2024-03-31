@@ -48,7 +48,6 @@ let zombieAngle; // Create an angle array for zombies
 
 //gloabl variables
 window.score = 0;
-
 window.playerHealth = 100;
 window.earthHealth = 500;
 window.playerCoordinates = { x: 0, y: 0 };
