@@ -45,7 +45,6 @@ Planet Game is built using [p5.js](https://p5js.org/) for graphics and interacti
 
 When contributing to Planet Game, make sure to follow the [p5.js guidelines](https://p5js.org/get-started/) and best practices when adding or modifying game elements. Familiarize yourself with the p5.js documentation and explore its capabilities to enhance the gameplay experience.
 
-Thank you for your contributions! 
 
 ### Code Style
 
@@ -54,4 +53,5 @@ Thank you for your contributions!
   npm run lint
   npm run format
   ```
+Thank you for your contributions! 
 
