@@ -7,7 +7,7 @@ export default class AsteroidController {
   constructor(asteroidSprite) {
     this.asteroidSprite = asteroidSprite;
     this.asteroids = [];
-    this.numAsteroids = 7;
+    this.numAsteroids = 10;
     this.edgePositions = [
       // change these multipliers to change the spawn area as these are hardcoded values
       { x: -c.canvasWidth, y: Math.random() * c.canvasHeight }, // Left edge
