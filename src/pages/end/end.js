@@ -13,8 +13,9 @@ buttonAgain.addEventListener('click', () => {
 });
 
 // Initialize Supabase
-const supabaseUrl = process.env.URL_NAME;
-const supabaseKey = process.env.KEY_NAME;
+const supabaseUrl = 'https://qgdvvgeurbttrdfhwptc.supabase.co';
+const supabaseKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnZHZ2Z2V1cmJ0dHJkZmh3cHRjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc3NDg2NTQsImV4cCI6MjAzMzMyNDY1NH0.aRudEvB9PkQakrffk8ZGACA6KxdEY_kF_ZbBrFjm5Qo';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Get the player's name and score from local storage
