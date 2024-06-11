@@ -55,12 +55,12 @@ if (isMobileDevice()) {
   window.location.href = '../../../index.html'; // Adjust the path as needed
 }
 
-// let navigationEntries = window.performance.getEntriesByType('navigation');
+let navigationEntries = window.performance.getEntriesByType('navigation');
 
-// // If there are any navigation entries and the last one was a reload
-// if (
-//   navigationEntries.length > 0 &&
-//   navigationEntries[navigationEntries.length - 1].type === 'reload'
-// ) {
-//   window.location.href = '../start/start.html';
-// }
+// If there are any navigation entries and the last one was a reload
+if (
+  navigationEntries.length > 0 &&
+  navigationEntries[navigationEntries.length - 1].type === 'reload'
+) {
+  window.location.href = '../start/start.html';
+}
