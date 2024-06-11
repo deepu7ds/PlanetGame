@@ -1,4 +1,6 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest/dist/index.esm.js';
+import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
+
+// rest of your code
 
 let buttonAgain = document.getElementById('button');
 let score = document.querySelector('.score');
