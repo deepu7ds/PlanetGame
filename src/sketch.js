@@ -37,6 +37,18 @@ window.preload = function preload() {
   enemyDied = loadSound('/PlanetGame/public/assets/sound/enemyDied.wav');
   collison = loadSound('/PlanetGame/public/assets/sound/collision.wav');
   backgroundMusic = loadSound('/PlanetGame/public/assets/sound/background.mp3');
+
+  // When working on local system use these file paths the above are for hosting
+  // earthSprite = loadImage('/assets/images/earthSprite.png');
+  // playerSprite = loadImage('/assets/images/playerSprite.png');
+  // enemySprite = loadImage('/assets/images/enemySprite.png');
+  // enemyBulletSprite = loadImage('/assets/images/enemyBulletSprite.png');
+  // playerBulletSprite = loadImage('/assets/images/playerBulletSprite.png');
+  // asteroidSprite = loadImage('/assets/images/asteroidSprite.png');
+  // zombieSprite = loadImage('/assets/images/zombieSprite.gif');
+  // enemyDied = loadSound('/assets/sound/enemyDied.wav');
+  // collison = loadSound('/assets/sound/collision.wav');
+  // backgroundMusic = loadSound('/assets/sound/background.mp3');
 };
 
 //objects initialized
@@ -207,7 +219,7 @@ window.draw = function draw() {
   ) {
     targetCamera = height / 2 / tan(PI / 20);
   } else {
-    targetCamera = height / 2 / tan(PI / 14);
+    targetCamera = height / 2 / tan(PI / 12);
   }
   // Use lerp to smoothly transition the camera position
   cameraZoom = lerp(cameraZoom, targetCamera, 0.02);
